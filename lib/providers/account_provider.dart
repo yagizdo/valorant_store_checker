@@ -48,7 +48,6 @@ class AccountProvider extends ChangeNotifier {
       await client.init(true);
       final store = client.playerInterface.getStorefront();
       await store.then((value) => itemsUuids = value?.skinsPanelLayout?.singleItemOffers ?? []);
-    notifyListeners();
   }
 
   Future<List<StoreItem>> getItems() async {
@@ -57,7 +56,6 @@ class AccountProvider extends ChangeNotifier {
     for(var s in itemsUuids) {
       storeItems.add(await getStoreItems(s));
   }
-    notifyListeners();
     return storeItems;
   }
 
