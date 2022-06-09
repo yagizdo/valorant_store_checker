@@ -10,14 +10,10 @@ import 'package:valorant_daily_store/screens/accounts_screen.dart';
 import '../models/account_model.dart';
 
 class AccountProvider extends ChangeNotifier {
-  List<Account> accounts = [];
   Dio dio = Dio();
   late ValorantClient client;
   List<String> itemsUuids = [];
   List<StoreItem> storeItems = [];
-
-  UnmodifiableListView<Account> get allAccounts =>
-      UnmodifiableListView(accounts);
 
   UnmodifiableListView<StoreItem> get allStoreItems =>
       UnmodifiableListView(storeItems);
@@ -25,7 +21,7 @@ class AccountProvider extends ChangeNotifier {
   get userAccount => client;
 
   void addAccount(Account newAccount) {
-    accounts.add(newAccount);
+saveHive(newAccount);
     notifyListeners();
   }
 
@@ -78,17 +74,13 @@ class AccountProvider extends ChangeNotifier {
     return items;
   }
 
-
-  Future<void> saveHive() async {
-    var box = Hive.box('accounts');
-    await box.clear();
-    await box.put('accountsList', accounts);
-  }
-
-  Future<void> readHive() async {
-    var box = Hive.box('accounts');
-    var list = await box.get('accountsList');
-    accounts = list;
+// Save method
+  Future<void> saveHive(Account account) async {
+    // Account turunde veri tutacak bir hive box actik
+    Box<Account> boxSave = Hive.box<Account>('accounts');
+    // Direk account listesi kayit etmek yerine tek tek accountlari kayit ediyoruz.
+    // Hive zaten kendi icinde liste gibi bunlara index veriyor
+    boxSave.add(account);
     notifyListeners();
   }
 }
