@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:valorant_client/valorant_client.dart';
 import 'package:valorant_daily_store/models/store_item.dart';
 import 'package:valorant_daily_store/screens/accounts_screen.dart';
@@ -75,5 +76,19 @@ class AccountProvider extends ChangeNotifier {
       }
     }
     return items;
+  }
+
+
+  Future<void> saveHive() async {
+    var box = Hive.box('accounts');
+    await box.clear();
+    await box.put('accountsList', accounts);
+  }
+
+  Future<void> readHive() async {
+    var box = Hive.box('accounts');
+    var list = await box.get('accountsList');
+    accounts = list;
+    notifyListeners();
   }
 }
