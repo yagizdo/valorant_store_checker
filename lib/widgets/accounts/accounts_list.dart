@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/account_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:valorant_daily_store/screens/daily_market_screen.dart';
+import 'package:valorant_daily_store/widgets/accounts/accounts_card.dart';
 import 'package:valorant_daily_store/widgets/accounts/add_account_card.dart';
 
 import '../../constants/app_colors.dart';
@@ -34,7 +35,7 @@ class AccountsList extends StatelessWidget {
           }
               // Get data
               Account? data = box.getAt(index);
-              return ListTile(title: Text(data!.username,style: TextStyle(color: white)),);
+              return AccountCard(account: data!);
             },
           );
         },
