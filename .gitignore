@@ -30,7 +30,8 @@
 .pub-cache/
 .pub/
 build/
-installers/
+installers/dmg_creator/
+installers/dmg_creator/config.json
 .flutter-plugins-dependencies
 
 # Android related

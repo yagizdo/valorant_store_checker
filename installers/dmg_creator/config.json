@@ -1,5 +1,5 @@
 {
-  "title": "Valorant Store Checker",
+  "title": "Valorant Daily Store",
   "icon": "../../macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png",
   "contents": [
     { "x": 448, "y": 344, "type": "link", "path": "/Applications" },
