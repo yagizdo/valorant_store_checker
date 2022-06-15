@@ -12,5 +12,6 @@ class AppTheme {
     appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent,elevation: 5),
     bottomNavigationBarTheme:
     const BottomNavigationBarThemeData(backgroundColor: black),
+    textTheme: TextTheme(headline5: TextStyle(color: white, fontSize: 18), headline6: TextStyle(color: white, fontSize: 15)),
   );
 }

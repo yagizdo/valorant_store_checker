@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/store_item.dart';
 import 'package:valorant_daily_store/providers/account_provider.dart';
-import 'package:valorant_daily_store/widgets/store_list.dart';
+import 'package:valorant_daily_store/widgets/daily_store/store_list.dart';
 
 import '../models/account_model.dart';
 
@@ -30,7 +30,7 @@ class _DailyMarketScreenState extends State<DailyMarketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daily Market'),
+        title: Text('Daily Market : ${widget.accountInfo.username}'),
       ),
       body: Consumer<AccountProvider>(builder: (context, state, child) {
         return FutureBuilder<Iterable<StoreItem>>(

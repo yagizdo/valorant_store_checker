@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:valorant_daily_store/widgets/daily_store/store_item_card.dart';
 
-import '../models/store_item.dart';
+import '../../models/store_item.dart';
 
 class StoreList extends StatelessWidget {
   const StoreList({Key? key,required this.snapshot}) : super(key: key);
@@ -15,11 +16,11 @@ class StoreList extends StatelessWidget {
         return const Text('Error');
       } else if (snapshot.hasData) {
         var data = snapshot.data!.toList();
-        print(data.length);
-        return ListView.builder(
+        return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 2),
             itemCount: snapshot.data?.length,
             itemBuilder: (context, index) =>
-                Image.network(data[index].displayIcon!));
+                StoreItemCard(item: data[index]));
       } else {
         return const Text('Empty data');
       }
