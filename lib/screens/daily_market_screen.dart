@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/store_item.dart';
 import 'package:valorant_daily_store/providers/account_provider.dart';
+import 'package:valorant_daily_store/widgets/store_list.dart';
 
 import '../models/account_model.dart';
 
@@ -36,24 +37,7 @@ class _DailyMarketScreenState extends State<DailyMarketScreen> {
           future: itemList,
           builder: (BuildContext context,
               AsyncSnapshot<Iterable<StoreItem>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError) {
-                return const Text('Error');
-              } else if (snapshot.hasData) {
-                var data = snapshot.data!.toList();
-                print(data.length);
-                return ListView.builder(
-                    itemCount: snapshot.data?.length,
-                    itemBuilder: (context, index) =>
-                        Image.network(data[index].displayIcon!));
-              } else {
-                return const Text('Empty data');
-              }
-            } else {
-              return Text('State: ${snapshot.connectionState}');
-            }
+            return StoreList(snapshot: snapshot);
           },
         );
       }),
