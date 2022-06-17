@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
-import 'package:valorant_daily_store/models/account_model.dart';
-import 'package:valorant_daily_store/providers/account_provider.dart';
 import 'package:valorant_daily_store/widgets/accounts/accounts_list.dart';
-import 'package:valorant_daily_store/widgets/accounts/add_account_card.dart';
-
-import '../constants/app_colors.dart';
 
 class AccountsScreen extends StatefulWidget {
   const AccountsScreen({Key? key}) : super(key: key);
@@ -30,7 +24,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Accounts'),
+        title: const Text('Accounts'),
       ),
       body: const AccountsList(),
     );

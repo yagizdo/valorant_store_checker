@@ -8,26 +8,21 @@ class StoreItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print(item.streamedVideo ?? 'No video');
-      },
-      child: Column(
-        children: [
-          Image.network(
-            item.displayIcon!,
-            scale: 1.5,
-          ),
-          SizedBox(height: 10),
-          Text(
-            item.displayName!,
-            style: item.displayName!.length <= 15
-                ? Theme.of(context).textTheme.headline5
-                : Theme.of(context).textTheme.headline6,
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Image.network(
+          item.displayIcon!,
+          scale: 2,
+        ),
+        const SizedBox(height: 10),
+        Text(
+          item.displayName!,
+          style: item.displayName!.length <= 15
+              ? Theme.of(context).textTheme.headline5
+              : Theme.of(context).textTheme.headline6,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

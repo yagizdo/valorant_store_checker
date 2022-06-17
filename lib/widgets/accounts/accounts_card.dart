@@ -70,7 +70,7 @@ class _AccountCardState extends State<AccountCard> {
               )
             : ListTile(
                 title: Text(widget.account.username,
-                    style: TextStyle(color: white)),
+                    style: const TextStyle(color: white)),
               ));
   }
 }

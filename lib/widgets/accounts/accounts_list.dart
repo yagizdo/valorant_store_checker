@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/account_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:valorant_daily_store/screens/daily_market_screen.dart';
 import 'package:valorant_daily_store/widgets/accounts/accounts_card.dart';
 import 'package:valorant_daily_store/widgets/accounts/add_account_card.dart';
 
-import '../../constants/app_colors.dart';
 import '../../providers/account_provider.dart';
 
 class AccountsList extends StatelessWidget {
@@ -24,7 +21,7 @@ class AccountsList extends StatelessWidget {
         valueListenable: Hive.box<Account>('accounts').listenable(),
         builder: (context, Box<Account> box, _) {
           if(box.values.isEmpty) {
-            return AddAccountCard();
+            return const AddAccountCard();
           }
           return ListView.builder(
             itemCount: box.values.length + 1,

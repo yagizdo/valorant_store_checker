@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valorant_daily_store/constants/app_colors.dart';
 import 'package:valorant_daily_store/widgets/daily_store/store_item_card.dart';
 
 import '../../models/store_item.dart';
@@ -10,14 +11,14 @@ class StoreList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (snapshot.connectionState == ConnectionState.waiting) {
-      return CircularProgressIndicator();
+      return const Center(child: CircularProgressIndicator(color: white,));
     } else if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
         return const Text('Error');
       } else if (snapshot.hasData) {
         var data = snapshot.data!.toList();
         return GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 2),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 2),
             itemCount: snapshot.data?.length,
             itemBuilder: (context, index) =>
                 StoreItemCard(item: data[index]));

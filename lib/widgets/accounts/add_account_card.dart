@@ -89,14 +89,12 @@ class AddAccountCard extends StatelessWidget {
               );
             });
       },
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Container(
-          child: const ListTile(
-            title: Text(
-              'Add Account..',
-              style: TextStyle(color: white),
-            ),
+      child: const Padding(
+        padding: EdgeInsets.all(15.0),
+        child: ListTile(
+          title: Text(
+            'Add Account..',
+            style: TextStyle(color: white),
           ),
         ),
       ),
