@@ -1,16 +1,59 @@
-# valorant_daily_store
+# Flutter - Valorant Store Checker
 
-A new Flutter project.
+Valorant Store Checker I made with Flutter.
 
-## Getting Started
+## Run Locally
 
-This project is a starting point for a Flutter application.
+Clone the project
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+  git clone https://github.com/yagizdo/valorant_store_checker
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Go to the project directory
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+  cd Valorant-Store-Checker
+```
+
+Install dependencies
+
+```bash
+  flutter pub get
+```
+
+Run App
+
+```bash
+  flutter run
+```
+
+
+## What will be add :question:
+
+- [ ] Skin videos
+
+
+## How to use
+After downloading the application, all you have to do is click the add account button and add your riot account. 
+
+Now, every time you click on your account, you will be able to see your current store.
+
+## Valorant Client
+Valorant Client I use: https://pub.dev/packages/valorant_client
+
+
+##  Libraries I use in the application:
+- Dio : https://pub.dev/packages/dio
+- Hex Color : https://pub.dev/packages/hexcolor
+- Provider : https://pub.dev/packages/provider
+
+
+## App Video
+
+https://user-images.githubusercontent.com/31064552/174044331-d2833fe0-b9a5-4c8c-a26d-fadea25b8713.mp4
+
+
+## Contributing
+
+Contributions are always welcome!
