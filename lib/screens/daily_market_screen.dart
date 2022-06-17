@@ -19,8 +19,6 @@ class _DailyMarketScreenState extends State<DailyMarketScreen> {
 
   @override
   void initState() {
-    Provider.of<AccountProvider>(context, listen: false)
-        .initClient(widget.accountInfo);
     itemList = Provider.of<AccountProvider>(context, listen: false).getItems();
 
     super.initState();

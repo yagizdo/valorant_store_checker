@@ -10,21 +10,25 @@ import 'package:valorant_daily_store/screens/accounts_screen.dart';
 import '../models/account_model.dart';
 
 class AccountProvider extends ChangeNotifier {
+  // Dio client
   Dio dio = Dio();
+
+  // Valorant Client
   late ValorantClient client;
+
+  // Item UUID List
   List<String> itemsUuids = [];
+
+  // Store Items List
   List<StoreItem> storeItems = [];
 
-  UnmodifiableListView<StoreItem> get allStoreItems =>
-      UnmodifiableListView(storeItems);
-
-  get userAccount => client;
-
+  // add account to hive box
   void addAccount(Account newAccount) {
-saveHive(newAccount);
+    saveHive(newAccount);
     notifyListeners();
   }
 
+  // create user account and save it to hive
   void createUser(Account account) async {
     client = ValorantClient(
       UserDetails(
@@ -40,13 +44,15 @@ saveHive(newAccount);
     );
 }
 
-  void initClient(Account account) async {
+  // init client with account info
+  Future<void> initClient(Account account) async {
       createUser(account);
       await client.init(true);
       final store = client.playerInterface.getStorefront();
       await store.then((value) => itemsUuids = value?.skinsPanelLayout?.singleItemOffers ?? []);
   }
 
+  // get store items
   Future<List<StoreItem>> getItems() async {
     print(itemsUuids.length);
     storeItems = [];
@@ -56,6 +62,7 @@ saveHive(newAccount);
     return storeItems;
   }
 
+  // get store item by uuid
   Future<StoreItem> getStoreItems(String itemUuid) async {
     late StoreItem items;
     try {
@@ -74,7 +81,7 @@ saveHive(newAccount);
     return items;
   }
 
-// Save method
+  // save account to hive
   Future<void> saveHive(Account account) async {
     // Account turunde veri tutacak bir hive box actik
     Box<Account> boxSave = Hive.box<Account>('accounts');
