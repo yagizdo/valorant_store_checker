@@ -22,6 +22,9 @@ class AccountProvider extends ChangeNotifier {
   // Store Items List
   List<StoreItem> storeItems = [];
 
+  // String error
+  bool errorState = false;
+
   // add account to hive box
   void addAccount(Account newAccount) {
     saveHive(newAccount);
@@ -35,6 +38,8 @@ class AccountProvider extends ChangeNotifier {
           userName: account.username, password: account.password, region: Region.eu),
       callback: Callback(
         onError: (String error) {
+          errorState = true;
+          notifyListeners();
           print(error);
         },
         onRequestError: (DioError error) {
@@ -46,9 +51,20 @@ class AccountProvider extends ChangeNotifier {
 
   // init client with account info
   Future<void> initClient(Account account) async {
+
+      // create user account and save it to hive
       createUser(account);
+
+      // client init
       await client.init(true);
+
+      // update error state
+      errorState = false;
+
+      // get items uuids
       final store = client.playerInterface.getStorefront();
+
+      // get item skins by uuids
       await store.then((value) => itemsUuids = value?.skinsPanelLayout?.singleItemOffers ?? []);
   }
 
