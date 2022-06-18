@@ -35,6 +35,10 @@ Run App
 
 
 ## How to use
+
+### NOTE : It will not work on accounts that have 2FA enabled. The client does not yet support 2FA.
+
+
 After downloading the application, all you have to do is click the add account button and add your riot account. 
 
 Now, every time you click on your account, you will be able to see your current store.
