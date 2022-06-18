@@ -32,7 +32,7 @@ class AccountsList extends StatelessWidget {
           }
               // Get data
               Account? data = box.getAt(index);
-              return AccountCard(account: data!);
+              return AccountCard(account: data!,index : index);
             },
           );
         },

@@ -33,6 +33,8 @@ class _AddAccountCardState extends State<AddAccountCard> {
             context: context,
             builder: (BuildContext context) {
               return SingleChildScrollView(
+
+                // Alert Dialog shape
                 child: StatefulBuilder(
                   builder: (context, setState) => AlertDialog(
                     backgroundColor: black,

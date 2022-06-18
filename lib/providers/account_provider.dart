@@ -103,6 +103,12 @@ class AccountProvider extends ChangeNotifier {
     return items;
   }
 
+  // delete account on hive box
+  void deleteHive(int index) {
+    Box<Account> boxDelete = Hive.box<Account>('accounts');
+    boxDelete.deleteAt(index);
+    notifyListeners();
+  }
   // save account to hive
   Future<void> saveHive(Account account) async {
     // Account turunde veri tutacak bir hive box actik
@@ -112,4 +118,6 @@ class AccountProvider extends ChangeNotifier {
     boxSave.add(account);
     notifyListeners();
   }
+
+
 }
