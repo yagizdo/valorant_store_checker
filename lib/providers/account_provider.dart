@@ -25,6 +25,9 @@ class AccountProvider extends ChangeNotifier {
   // String error
   bool errorState = false;
 
+  // User Region
+  late Region region;
+
   // add account to hive box
   void addAccount(Account newAccount) {
     saveHive(newAccount);
@@ -33,9 +36,12 @@ class AccountProvider extends ChangeNotifier {
 
   // create user account and save it to hive
   void createUser(Account account) async {
+    account.region ==  'NA' ? region = Region.na : account.region == 'EU' ? region = Region.eu : account.region == 'KR' ? region = Region.ko : region = Region.eu;
+    notifyListeners();
+    print('user region is: ${account.region} : provider region ${region}');
     client = ValorantClient(
       UserDetails(
-          userName: account.username, password: account.password, region: Region.eu),
+          userName: account.username, password: account.password, region: region),
       callback: Callback(
         onError: (String error) {
           errorState = true;

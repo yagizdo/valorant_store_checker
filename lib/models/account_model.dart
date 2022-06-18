@@ -7,6 +7,8 @@ class Account {
   String username;
   @HiveField(1)
   String password;
+  @HiveField(2)
+  String region;
 
-  Account(this.username,this.password);
+  Account(this.username,this.password,this.region);
 }

@@ -30,7 +30,7 @@ class _DailyMarketScreenState extends State<DailyMarketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daily Market : ${widget.accountInfo.username}'),
+        title: Text('Daily Market : ${widget.accountInfo.username} - Region : ${widget.accountInfo.region}'),
       ),
       body: Consumer<AccountProvider>(builder: (context, state, child) {
         return state.errorState == true ?
