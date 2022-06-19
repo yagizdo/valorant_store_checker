@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +46,7 @@ class _AddAccountCardState extends State<AddAccountCard> {
                     ),
                     title: const Center(child: Text('Add your Valorant Account')),
                     content: SizedBox(
-                      height: 180.h,
+                      height: Platform.isMacOS ? 280.h : 180.h,
                       width: 250.w,
                       child: Form(
                         key: formKey,
