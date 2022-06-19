@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/app_colors.dart';
@@ -38,9 +39,13 @@ class _AddAccountCardState extends State<AddAccountCard> {
                 child: StatefulBuilder(
                   builder: (context, setState) => AlertDialog(
                     backgroundColor: black,
-                    title: const Text('Add Account'),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    title: const Center(child: Text('Add your Valorant Account')),
                     content: SizedBox(
-                      height: MediaQuery.of(context).size.height / 4.5,
+                      height: 180.h,
+                      width: 250.w,
                       child: Form(
                         key: formKey,
                         child: Column(
@@ -48,8 +53,9 @@ class _AddAccountCardState extends State<AddAccountCard> {
                             // Username
                             TextFormField(
                               controller: usernameControl,
-                              style: TextStyle(color: white),
+                              style: const TextStyle(color: white),
                               cursorColor: white,
+                              maxLength: 20,
                               validator: (value) {
                                 if (value == '') {
                                   return 'Username cant be empty';
@@ -65,10 +71,10 @@ class _AddAccountCardState extends State<AddAccountCard> {
 
                             // Password
                             Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
+                              padding: EdgeInsets.only(top: 15.h),
                               child: TextFormField(
                                 controller: passwordControl,
-                                style: TextStyle(color: white),
+                                style: const TextStyle(color: white),
                                 cursorColor: white,
                                 validator: (value) {
                                   if (value == '') {
@@ -129,13 +135,10 @@ class _AddAccountCardState extends State<AddAccountCard> {
               );
             });
       },
-      child: const Padding(
-        padding: EdgeInsets.all(15.0),
-        child: ListTile(
-          title: Text(
-            'Add Account..',
-            style: TextStyle(color: white),
-          ),
+      child: const ListTile(
+        title: Text(
+          'Add Account..',
+          style: TextStyle(color: white),
         ),
       ),
     );
