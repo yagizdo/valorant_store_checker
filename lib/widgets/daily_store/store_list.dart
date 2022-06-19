@@ -18,7 +18,7 @@ class StoreList extends StatelessWidget {
       } else if (snapshot.hasData) {
         var data = snapshot.data!.toList();
         return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 2),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 2.4),
             itemCount: snapshot.data?.length,
             itemBuilder: (context, index) =>
                 StoreItemCard(item: data[index]));
