@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../models/store_item.dart';
 
@@ -12,9 +13,9 @@ class StoreItemCard extends StatelessWidget {
       children: [
         Image.network(
           item.displayIcon!,
-          scale: 2,
+          scale: 2.5,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Text(
           item.displayName!,
           style: item.displayName!.length <= 15

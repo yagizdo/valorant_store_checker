@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/account_model.dart';
 import 'package:valorant_daily_store/screens/daily_market_screen.dart';
@@ -53,17 +54,17 @@ class _AccountCardState extends State<AccountCard> {
               children: [
                 // Account list tile
                 SizedBox(
-                  width: 150,
+                  width: widget.account.username.length >= 9 ? 220.w : 100.w,
                   child: ListTile(
                     title: Text(widget.account.username,
-                        style: const TextStyle(color: white)),
+                        style: TextStyle(color: white, fontSize: 15.sp)),
                   ),
                 ),
 
                 // CircularProgressIndicator
-                const SizedBox(
-                  height: 20,
-                  width: 20,
+                SizedBox(
+                  height: 20.h,
+                  width: 20.w,
                   child:
                       CircularProgressIndicator(strokeWidth: 3, color: white),
                 ),
@@ -71,7 +72,7 @@ class _AccountCardState extends State<AccountCard> {
             )
           : ListTile(
               title: Text(widget.account.username,
-                  style: const TextStyle(color: white)),
+                  style: TextStyle(color: white, fontSize: 15.sp)),
               // delete leading button
               trailing: IconButton(
                 icon: const Icon(
@@ -79,11 +80,62 @@ class _AccountCardState extends State<AccountCard> {
                   color: CupertinoColors.systemRed,
                 ),
                 onPressed: () {
-                // delete account from hive box
-                  Provider.of<AccountProvider>(context,listen: false).deleteHive(widget.index);
+                  showAlertDialog(context);
                 },
               ),
             ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Cancel", style: const TextStyle(color: white)),
+      onPressed:  () {
+        Navigator.pop(context);
+      },
+    );
+    // delete button
+    Widget deleteButton = SizedBox(
+      width: 100.w,
+      height: 25.h,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(CupertinoColors.destructiveRed),
+          foregroundColor: MaterialStateProperty.all(CupertinoColors.white),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                )
+            )
+        ),
+        child: Text("Delete"),
+        onPressed:  () {
+          // delete account from hive box
+          Provider.of<AccountProvider>(context,listen: false).deleteHive(widget.index);
+          Navigator.pop(context);
+        },
+      ),
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      backgroundColor: black,
+      title: Text("Delete Account", style: TextStyle(color: CupertinoColors.systemRed)),
+      content: Text("Are you sure?", style: TextStyle(color: white)),
+      actions: [
+        cancelButton,
+        deleteButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
