@@ -65,14 +65,14 @@ class _AccountCardState extends State<AccountCard> {
             width: widget.account.username.length >= 9 ? 220.w : 100.w,
             child: ListTile(
               title: Text(widget.account.username,
-                  style: TextStyle(color: white, fontSize: 15.sp)),
+                  style: TextStyle(color: white, fontSize: 9.sp)),
             ),
           ),
 
           // CircularProgressIndicator
           SizedBox(
             height: 20.h,
-            width: 20.w,
+            width: 10.w,
             child:
             CircularProgressIndicator(strokeWidth: 3, color: white),
           ),
