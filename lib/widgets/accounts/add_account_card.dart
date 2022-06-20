@@ -57,6 +57,7 @@ class _AddAccountCardState extends State<AddAccountCard> {
                               controller: usernameControl,
                               style: const TextStyle(color: white),
                               cursorColor: white,
+                              smartQuotesType: SmartQuotesType.disabled,
                               maxLength: 20,
                               validator: (value) {
                                 if (value == '') {
@@ -78,6 +79,7 @@ class _AddAccountCardState extends State<AddAccountCard> {
                                 controller: passwordControl,
                                 style: const TextStyle(color: white),
                                 cursorColor: white,
+                                smartQuotesType: SmartQuotesType.disabled,
                                 validator: (value) {
                                   if (value == '') {
                                     return 'Password cant be empty';
