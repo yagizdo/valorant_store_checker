@@ -28,6 +28,9 @@ class AccountProvider extends ChangeNotifier {
   // User Region
   late Region region;
 
+  // Error status code
+  List<String> errorStatusCode = [];
+
   // add account to hive box
   void addAccount(Account newAccount) {
     saveHive(newAccount);
@@ -42,9 +45,11 @@ class AccountProvider extends ChangeNotifier {
     client = ValorantClient(
       UserDetails(
           userName: account.username, password: account.password, region: region),
+      shouldPersistSession: false,
       callback: Callback(
         onError: (String error) {
           errorState = true;
+          errorStatusCode.add(error);
           notifyListeners();
           print(error);
         },
