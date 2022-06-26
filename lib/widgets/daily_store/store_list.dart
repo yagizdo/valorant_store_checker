@@ -15,7 +15,8 @@ class StoreList extends StatelessWidget {
       return const Center(child: CircularProgressIndicator(color: white,));
     } else if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
-        return const Text('Error');
+        print('snapshot error : ${snapshot.error}');
+        return const Text('List Snapshot error', style: TextStyle(color: white),);
       } else if (snapshot.hasData) {
         var data = snapshot.data!.toList();
         return Padding(
