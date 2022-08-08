@@ -55,7 +55,9 @@ Valorant Client I use: https://pub.dev/packages/valorant_client
 
 ## App Video
 
-https://user-images.githubusercontent.com/31064552/174044331-d2833fe0-b9a5-4c8c-a26d-fadea25b8713.mp4
+
+https://user-images.githubusercontent.com/31064552/183431714-466b6460-2e97-4834-b543-4153ef63671b.mp4
+
 
 
 ## Contributing
