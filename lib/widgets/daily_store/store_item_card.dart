@@ -9,21 +9,27 @@ class StoreItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.network(
-          item.displayIcon!,
-          scale: 2.5,
-        ),
-        SizedBox(height: 10.h),
-        Text(
-          item.displayName!,
-          style: item.displayName!.length <= 15
-              ? Theme.of(context).textTheme.headline5
-              : Theme.of(context).textTheme.headline6,
-          textAlign: TextAlign.center,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(top: 15.w),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15.w,
+          ),
+          Image.network(
+            item.displayIcon!,
+            scale: 1.5.w,
+          ),
+          SizedBox(height: 15.w),
+          Text(
+            item.displayName!,
+            style: item.displayName!.length <= 15
+                ? Theme.of(context).textTheme.headline5
+                : Theme.of(context).textTheme.headline6,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
