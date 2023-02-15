@@ -26,7 +26,7 @@ class StoreList extends StatelessWidget {
       } else if (snapshot.hasData) {
         var data = snapshot.data!.toList();
         return Padding(
-            padding: EdgeInsets.only(top: 25.h),
+            padding: EdgeInsets.only(top: 20.w),
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: snapshot.data?.length,

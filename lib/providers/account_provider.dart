@@ -74,6 +74,7 @@ class AccountProvider extends ChangeNotifier {
 
       // get items uuids
       final store = client.playerInterface.getStorefront();
+      final store2 = client.playerInterface.getStoreOffers();
 
       // get item skins by uuids
       await store.then((value) => itemsUuids = value?.skinsPanelLayout?.singleItemOffers ?? []);

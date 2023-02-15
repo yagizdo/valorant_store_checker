@@ -11,6 +11,6 @@ class AppTheme {
   final dailyStoreTheme = ThemeData(
     scaffoldBackgroundColor: black,
     appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent,elevation: 5),
-    textTheme: TextTheme(headline5: TextStyle(color: white, fontSize: 17.sp), headline6: const TextStyle(color: white, fontSize: 15)),
+    textTheme: TextTheme(headline5: TextStyle(color: white, fontSize: 16.sp), headline6: const TextStyle(color: white, fontSize: 15)),
   );
 }
