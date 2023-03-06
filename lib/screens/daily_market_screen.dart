@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_daily_store/models/store_item.dart';
 import 'package:valorant_daily_store/providers/account_provider.dart';
@@ -39,7 +40,20 @@ class _DailyMarketScreenState extends State<DailyMarketScreen> {
           future: itemList,
           builder: (BuildContext context,
               AsyncSnapshot<Iterable<StoreItem>> snapshot) {
-            return StoreList(snapshot: snapshot);
+            return Column(
+              children: [
+                Expanded(child: Column(
+                  children: [
+                    Text('Radiant Points: ${state.radianitePoints}', style: TextStyle(color: white, fontSize: 18.sp),),
+                    Text('Valorant Points: ${state.valorantPoints}', style: TextStyle(color: white, fontSize: 18.sp),),
+                  ],
+                ),
+                ),
+                Expanded(
+                    flex: 10,
+                    child: StoreList(snapshot: snapshot)),
+              ],
+            );
           },
         );
       }),

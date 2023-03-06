@@ -31,6 +31,13 @@ class AccountProvider extends ChangeNotifier {
   // Error status code
   List<String> errorStatusCode = [];
 
+  // Valorant Points
+  var valorantPoints = 0;
+
+  // Radiant Points
+  var radianitePoints = 0;
+
+
   // add account to hive box
   void addAccount(Account newAccount) {
     saveHive(newAccount);
@@ -87,6 +94,7 @@ class AccountProvider extends ChangeNotifier {
     for(var s in itemsUuids) {
       storeItems.add(await getStoreItems(s));
   }
+    getCurrencies();
     return storeItems;
   }
 
@@ -107,6 +115,13 @@ class AccountProvider extends ChangeNotifier {
       }
     }
     return items;
+  }
+
+  Future<void> getCurrencies() async {
+    var currencies = await client.playerInterface.getBalance();
+    valorantPoints = currencies?.valorantPoints ?? 0;
+    radianitePoints = currencies?.radianitePoints ?? 0;
+    notifyListeners();
   }
 
   // delete account on hive box
